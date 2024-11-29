@@ -77,4 +77,33 @@ select Matricula,Nome from veiculo n join cliente d on n.Cliente_NIF=d.NIF;
 select NIF,Nome from cliente n join veiculo d on n.NIF=d.Cliente_NIF where Matricula='EF56GH78';
 
 #exercício 3 exiba a matricula e a cor do veiculo que possui o codico de estacionamento 1
-select Matricula,Cor from Veiculo d join estaciona n on d.Matricula=n.veiculo_matricula;
+select Matricula,Cor from Veiculo d join estaciona n on d.Matricula=n.veiculo_matricula where estacionamento_num=101;
+
+#exercício 4 Exiba a matricula e o ano do veiculo (add column) que posusi o codico de estacionamento 1
+alter table veiculo add column ano_lancamento int;
+
+update veiculo set ano_lancamento = 1964 where Matricula = 'AB12CD34';
+
+update veiculo set ano_lancamento = 1972 where Matricula = 'EF56GH78';
+
+update veiculo set ano_lancamento = 1974 where Matricula = 'IJ90KL12';
+
+select matricula,ano_lancamento from veiculo I join estaciona II on I.Matricula=II.veiculo_matricula where estacionamento_num=101;
+#exercício 5 exbiba a data de entrada e de saída dos estacionamentos do veiculo matricula (70CD20ZH)
+
+select dataEntrada,dataSaida from estaciona I join veiculo II on I.veiculo_matricula=II.Matricula where Matricula='IJ90KL12';
+
+#exercício 6 Apresente todos os clientes que possuem um carro de Modelo 123 e 789
+select nome from cliente I join veiculo II on I.NIF=II.Cliente_NIF where II.Modelo_CodMod in (123,789);
+
+#exercício 7 Apresente a matrícula que contenham a letra 'k' e os horários de entrada e saida dos veículos de cor preto
+select Matricula,horaEntrada,horaSaida from veiculo I join estaciona II on I.Matricula=II.veiculo_matricula where Cor='preto' and matricula like '%k%' ;
+
+#exercício 8 exiba o nome do cliente que possui o veiculo cujo codico do estacionamento é 2
+select nome from cliente I join veiculo II on I.NIF=II.Cliente_NIF join estaciona III on II.Matricula=III.veiculo_matricula where estacionamento_num=202;
+
+#exercício 9 Exiba o NIF do Cliente que Possui o Veículo cujo códico do estacionamento 3
+select Cliente_NIF from veiculo I join estaciona II on I.Matricula=II.veiculo_matricula where estacionamento_num=303;
+
+
+#exercício 10 Exiba o blablabla
